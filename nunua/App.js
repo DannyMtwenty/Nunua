@@ -11,8 +11,14 @@ class NunuaApp extends Component {
 
   subtract = () => {
     let initialValue = this.state.value;
+    if (initialValue > 0) {
+      this.setState({
+        value: initialValue - 1,
+      });
+    }
+
     this.setState({
-      value: initialValue-1,
+      value: initialValue - 1,
     });
   };
 
@@ -25,37 +31,72 @@ class NunuaApp extends Component {
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
-        <Text>{this.state.value}</Text>
+      <View  style ={{
+        flex: 1,
+        alignItems: "center",
+justifyContent: "center",
+      }}>
 
-        <TouchableOpacity
-          onPress={this.subtract}
-          style={{
-            backgroundColor: "red",
-            padding: 10,
-            margin: 10,
-            height: 50,
-            width: 100,
-          }}>
-          <Text>-</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={this.add}
+        <View
           style={{
-            backgroundColor: "red",
-            padding: 10,
-            margin: 10,
-            height: 50,
-            width: 100,
+            borderColor: "red",
+
+            flexDirection: "row",
+
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            borderWidth: 2,
+
+            backgroundColor: "white",
+            marginTop: 20,
           }}>
-          <Text>+</Text>
-        </TouchableOpacity>
+          <View>
+            {this.state.value > 0 ? (
+              <TouchableOpacity
+                onPress={this.subtract}
+                style={{
+                  backgroundColor: "green",
+
+                  height: 50,
+                  width: 100,
+                  alignItems: "center",
+                }}>
+                <Text style={{
+                  color: "white",
+                  fontSize: 40,
+                }}>-</Text>
+              </TouchableOpacity>
+            ) : null}
+          </View>
+
+          <Text >{this.state.value}</Text>
+
+          <View>
+            <TouchableOpacity
+              onPress={this.add}
+              style={{
+                backgroundColor: "green",
+              
+                justifyContent: "center",
+                alignItems: "center",
+
+                height: 50,
+                width: 100,
+                
+              }}>
+              <Text style={{
+                color: "white",
+                fontSize: 40
+              }}>+</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {this.state.value >= 10 ? (
+          <Text>HEY WE REACHDED LEVEL {this.state.value}</Text>
+        ) : null}
       </View>
     );
   }
