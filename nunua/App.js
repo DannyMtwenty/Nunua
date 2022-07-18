@@ -1,103 +1,126 @@
 import React, { Component } from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 class NunuaApp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 0,
-    };
   }
-
-  subtract = () => {
-    let initialValue = this.state.value;
-    if (initialValue > 0) {
-      this.setState({
-        value: initialValue - 1,
-      });
-    }
-
-    this.setState({
-      value: initialValue - 1,
-    });
-  };
-
-  add = () => {
-    let initialValue = this.state.value;
-    this.setState({
-      value: initialValue + 1,
-    });
-  };
 
   render() {
     return (
-      <View  style ={{
-        flex: 1,
-        alignItems: "center",
-justifyContent: "center",
-      }}>
-
-
+      <SafeAreaView
+        style={{
+          flex: 1,
+          borderWidth: 4,
+          borderColor: "red",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 10,
+        }}>
         <View
           style={{
-            borderColor: "red",
-
+            flex: 1,
+            borderWidth: 4,
+            borderColor: "green",
             flexDirection: "row",
-
             alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            borderWidth: 2,
-
-            backgroundColor: "white",
-            marginTop: 20,
+            justifyContent: "space-around",
           }}>
-          <View>
-            {this.state.value > 0 ? (
-              <TouchableOpacity
-                onPress={this.subtract}
-                style={{
-                  backgroundColor: "green",
-
-                  height: 50,
-                  width: 100,
-                  alignItems: "center",
-                }}>
-                <Text style={{
-                  color: "white",
-                  fontSize: 40,
-                }}>-</Text>
-              </TouchableOpacity>
-            ) : null}
+          <View
+            style={{
+              flex: 2,
+              borderWidth: 4,
+              marginLeft: 10,
+              height: 50 + "%",
+              borderColor: "blue",
+            }}>
+            <Text>I</Text>
           </View>
 
-          <Text >{this.state.value}</Text>
-
-          <View>
-            <TouchableOpacity
-              onPress={this.add}
-              style={{
-                backgroundColor: "green",
+          <View
+            style={{
+              flex: 8,
+              borderWidth: 4,
+              borderColor: "yellow",
+              marginHorizontal: 10,
+              height: 50 + "%",
+              justifyContent: "flex-start",
+              paddingLeft: 10,
               
-                justifyContent: "center",
-                alignItems: "center",
-
-                height: 50,
-                width: 100,
-                
-              }}>
-              <Text style={{
-                color: "white",
-                fontSize: 40
-              }}>+</Text>
-            </TouchableOpacity>
+            }}>
+            <Text>Search here</Text>
           </View>
         </View>
 
-        {this.state.value >= 10 ? (
-          <Text>HEY WE REACHDED LEVEL {this.state.value}</Text>
-        ) : null}
-      </View>
+        <View
+          style={{
+            flex: 2,
+            borderWidth: 4,
+            borderColor: "green",
+            flexDirection: "row",
+            width: 100 + "%",
+            marginRight : 15
+          }}>
+          <View
+           style={{
+            flex: 2,
+            borderWidth: 2,
+            backgroundColor: "red",
+            flexDirection: "row",
+            width: 20 + "%",
+            height: 50 + "%",
+            borderRadius: 15,
+            marginRight : 15
+          }}
+          >
+            <Text>Groceries</Text>
+          </View>
+
+          <View
+           style={{
+            flex: 2,
+            borderWidth: 2,
+            backgroundColor: "red",
+            flexDirection: "row",
+            width: 20 + "%",
+            height: 50 + "%",
+            borderRadius: 15,
+            marginRight : 15
+          }}
+          >
+            <Text>Repair</Text>
+          </View>
+
+          <View
+           style={{
+            flex: 2,
+            borderWidth: 2,
+            backgroundColor: "red",
+            flexDirection: "row",
+            width: 20 + "%",
+            height: 50 + "%",
+            borderRadius: 15,
+          }}
+          >
+            <Text>Gas delivery</Text>
+          </View>
+        </View>
+
+        <View style={{ flex: 3, borderWidth: 4, borderColor: "green" }}>
+          <Text>Box here</Text>
+        </View>
+
+        <View style={{ flex: 4, borderWidth: 4, borderColor: "green" }}>
+          <Text>Box here</Text>
+        </View>
+      </SafeAreaView>
     );
   }
 }
